@@ -2,5 +2,5 @@
 
 Memory transfer tests between GAP8 memories. L1, L2, L3 (RAM)
 
-![](tes_transfers.png)
+![](img/test_transfers.png)
 
