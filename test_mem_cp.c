@@ -356,6 +356,7 @@ void test_memory_ram_L3_L1_cl(trans_cl_arg_t *cl_Arg) {
   signed char *buff_aux_cl = cl_Arg->L2_aux;
   signed char *buff_L1_cl = cl_Arg->L1_buff_cl;
   unsigned int ram = cl_Arg->ram;
+  unsigned int b = cl_Arg->b;
 
 #ifdef VERBOSE_buff_cl
   printf("L3 = %x\n", buff_L3_cl);
@@ -365,7 +366,6 @@ void test_memory_ram_L3_L1_cl(trans_cl_arg_t *cl_Arg) {
   printf("ram = %x\n", ram);
 #endif
 
-  int b = 10;
   pi_cl_ram_req_t req_cp;
   pi_cl_ram_copy(ram, (uint32_t)(buff_L3_cl), buff_aux_cl, (uint32_t)b, 1,
                  &req_cp);
@@ -585,6 +585,7 @@ void fc_main() {
 #ifdef VERBOSE
   printf("send task to cluster..\n");
 #endif
+  float t_cl = 8e-06;
   for (int b = 1; b < (mc * nc); b++) {
     t1 = rt_time_get_us();
     for (int i = 0; i < reps; i++) {
@@ -594,7 +595,7 @@ void fc_main() {
     }
     t2 = rt_time_get_us();
     t = (t2 - t1) / 1e6;
-    time = (t / reps);
+    time = (t / reps) - t_cl;
     printf("%d %f %f\n", b, time, b / time);
   }
   printf("Close cluster after end of computation.\n");
