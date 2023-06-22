@@ -1,5 +1,5 @@
 # Transfer_GAP8-_test_Memory
-Memory transfer tests between GAP8 memories. L1, L2, L3 (RAM)
+This repository contains a set of memory transfer tests specifically designed for the GAP8 processor. The tests focus on evaluating the performance and efficiency of memory transfers across various levels of the processor's memory hierarchy, including L1, L2, and L3 (RAM).
 
 ![](img/test_transfers.jpg)
 
